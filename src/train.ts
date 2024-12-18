@@ -718,4 +718,28 @@ function singleNumber(nums: number[]): number {
 }
 
 
-console.log(singleNumber([4, 2 ,4 ,3 , 1, 2, 1])); 
+//console.log(singleNumber([4, 2 ,4 ,3 , 1, 2, 1])); 
+
+
+// ZR-TASK:
+
+// Shunday function yozing, u parametridagi string ichida 1 martadan ortiq qaytarilmagan birinchi harf indeksini qaytarsin.
+// MASALAN: firstUniqueCharIndex(“stamp”) return 0
+
+function firstUniqueCharIndex(input: string): number {
+  const charCount: { [key: string]: number } = {};
+
+  for (const char of input) {
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+
+  for (let i = 0; i < input.length; i++) {
+    if (charCount[input[i]] === 1) {
+      return i;
+    }
+  }
+
+  return -1;
+}
+
+console.log(firstUniqueCharIndex("stamps")); 
