@@ -742,4 +742,24 @@ function firstUniqueCharIndex(input: string): number {
   return -1;
 }
 
-console.log(firstUniqueCharIndex("stamps")); 
+//console.log(firstUniqueCharIndex("stamps")); 
+
+// ZS-TASK:
+
+// Shunday function yozing, u parametridagi array ichida takrorlanmagan raqamlar yig'indisini qaytarsin.
+// MASALAN: sumOfUnique([1,2,3,2]) return 4
+
+function sumOfUnique(nums: number[]): number {
+  const frequencyMap: { [key: number]: number } = {};
+
+  for (const num of nums) {
+      frequencyMap[num] = (frequencyMap[num] || 0) + 1;
+  }
+
+  return Object.keys(frequencyMap)
+      .filter(key => frequencyMap[+key] === 1)
+      .reduce((sum, key) => sum + +key, 0);
+}
+
+
+console.log(sumOfUnique([1, 2, 3, 4,2]));
