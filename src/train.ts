@@ -790,5 +790,37 @@ function moveZeroes(nums: number[]): number[] {
 }
 
 const Task_ZT = moveZeroes([0, 1, 0, 3, 12]);
-console.log(Task_ZT); 
+//console.log(Task_ZT); 
+
+
+// ZU-TASK:
+
+// Shunday function yozing, uni 2 ta parametri bo'lsin, biri array va biri string. Function arrayda berilgan malumotlarni 2-parametrdagi string qiymati asosida guruhlab qaytarsin.
+// MASALAN:
+// const data = [
+//   { name: 'Alice', age: 25, city: 'London' },
+//   { name: 'Bob',   age: 30, city: 'New York' },
+//   { name: 'Charlie', age: 25, city: 'London' },
+// ];
+// console.log(groupBy(data, 'city')); // { 'London': [ { name: 'Alice', age: 25, city: 'London' }, { name: 'Charlie', age: 25, city: 'London' } ], 'New York': [ { name: 'Bob', age: 30, city: 'New York' } ] }
+
+
+function groupBy<T>(array: T[], key: keyof T): Record<string, T[]> {
+  return array.reduce((result, item) => {
+      const groupKey = item[key] as unknown as string;
+      if (!result[groupKey]) {
+          result[groupKey] = [];
+      }
+      result[groupKey].push(item);
+      return result;
+  }, {} as Record<string, T[]>);
+}
+
+const data = [
+  { name: 'Alice', age: 25, city: 'London' },
+  { name: 'Bob', age: 30, city: 'New York' },
+  { name: 'Charlie', age: 25, city: 'London' },
+];
+
+console.log(groupBy(data, 'city'));
 
